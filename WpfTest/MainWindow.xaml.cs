@@ -39,8 +39,9 @@ namespace WpfTest
 
         private void btnClickMe_Click(object sender, RoutedEventArgs e)
         {
-            LstItems.Add(new SimpleObject((++number).ToString()));
-            slider.Maximum = lstList.Items.Count;
+            LstItems.Add(new SimpleObject(++number));
+            slider.Maximum = LstItems.Count;
+            lstList.ItemsSource = LstItems;
         }
 
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -51,9 +52,11 @@ namespace WpfTest
 
     class SimpleObject
     {
-        public string Value { get; }
+        public int Value;
+        public string ValueString { get { return this.Value.ToString(); } }
+        public int ValueInt { get { return this.Value; }  }
 
-        public SimpleObject(string value)
+        public SimpleObject(int value)
         {
             Value = value;
         }
