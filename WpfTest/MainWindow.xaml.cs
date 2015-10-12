@@ -21,11 +21,15 @@ namespace WpfTest
     public partial class MainWindow : Window
     {
         int number;
+        List<SimpleObject> LstItems;
 
         public MainWindow()
         {
-            number = 0;
             InitializeComponent();
+            number = 0;
+            LstItems = new List<SimpleObject>();
+            lstList.ItemsSource = LstItems;
+            
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -35,7 +39,7 @@ namespace WpfTest
 
         private void btnClickMe_Click(object sender, RoutedEventArgs e)
         {
-            lstList.Items.Add("Добавлено значение " + (++number).ToString());
+            LstItems.Add(new SimpleObject((++number).ToString()));
             slider.Maximum = lstList.Items.Count;
         }
 
