@@ -44,4 +44,19 @@ namespace WpfTest
             lstList.SelectedIndex = Convert.ToInt32(slider.Value);
         }
     }
+
+    class SimpleObject
+    {
+        public string Value { get; }
+
+        public SimpleObject(string value)
+        {
+            Value = value;
+        }
+
+        public override string ToString()
+        {
+            return "Значение объекта \"" + Value + "\"";
+        }
+    }
 }
